@@ -1,76 +1,62 @@
 \ProvidesPackage{style}[2018/07/14 My Style file .sty]
 
 % ──────────────────────────────────────────────────────────────────────────── %
-%                           Packages et dépendances                            %
+%                          Packages and dependencies                           %
 % ──────────────────────────────────────────────────────────────────────────── %
 
-%% Mise en forme
-\RequirePackage{xcolor} % gestion des couleurs
-\RequirePackage{multicol} % colonnes multiples côte à côte
+%% Formatting
+\RequirePackage{xcolor} % handling colors
+\RequirePackage{multicol} % multiple columns side-by-side
 
-\RequirePackage[most]{tcolorbox} % boites et autres cadres
-\RequirePackage[normalem]{ulem}  % barrer du texte
+\RequirePackage[most]{tcolorbox} % boxes and other frames
+\RequirePackage[normalem]{ulem}  % crossing text
 
-% Liens dynamiques
+% Dynamic links
 \RequirePackage{hyperref}
 \RequirePackage{url}
 \hypersetup{ linktoc=all, hidelinks}
 
-% Documents complémentaires
-\RequirePackage{appendix} % annexes
-\RequirePackage[translate=babel,  % glossary --> glossaire, ...
-                nogroupskip,
-                acronym,
-                toc]{glossaries} % acronymes, glossaires
-
-% Diagrames de Gantt
-\RequirePackage{pgfgantt}
-
 % Titles formating
 \usepackage{titlesec} % formatage des titres
 
-% Boucle for
-\RequirePackage{pgffor}
-
-% Tableaux et matrices
-\RequirePackage{booktabs,adjustbox} % tables sobres sans lignes verticales
+% Arrays and matrices
+\RequirePackage{booktabs,adjustbox} % sober tables
 %\RequirePackage{arydshln}
 \RequirePackage{array}
-\RequirePackage{makecell} % sauts de lignes dans une cellule
+\RequirePackage{makecell} % carriage return inside a cell
 \RequirePackage[outline]{contour}
 
-%% Création de graphes et images
-\usepackage[justification=centering]{caption} % colonnes multiples côte à côte
-\RequirePackage{xifthen} % fournit le test \isempty
+%% Creating graphs and images
+\usepackage[justification=centering]{caption}
 \RequirePackage{textcomp}
 
-\RequirePackage{tikz} % graphes et diagrammes natifs
+\RequirePackage{tikz} % graphs and diagrams
 \usetikzlibrary{
     positioning,
     decorations.pathreplacing,
-    shapes, % multiples formes géométriques
-    arrows, % multiples formes pour les flèches
-    calc, % calculs et positions intermédiaires: ($(x)!0.5!(y)$)
-    angles, % dessins d'angles propres
-    quotes, % pour les angles
+    shapes, % geometrical shapes
+    arrows, % shapes for arrows
+    calc, % intermediary positions: ($(x)!0.5!(y)$)
+    angles, % clean angles
+    quotes, % for angles
 }
 
 
-%% Insertion d'images
-\RequirePackage{graphicx} % pour les images
+%% Inserting images
+\RequirePackage{graphicx}
 \RequirePackage{float}
-\RequirePackage{wrapfig} % figures à côté du texte
+\RequirePackage{wrapfig} % having figures next to text
 
-% Mathématiques
-\RequirePackage{mathtools} % alignement des équations (entre autres)
-\RequirePackage{amssymb}   % symboles (\geqslant, entre autres)
-\RequirePackage{amsthm}    % théorèmes, définitions, lemmes, ...
+% Mathematics
+\RequirePackage{mathtools} % aligning equations (among other things
+\RequirePackage{amssymb}   % symbols (\geqslant, and others ...)
+\RequirePackage{amsthm}    % theorems, definitions, lemmas, ...
 
 % .... ?
 \RequirePackage{microtype}
 
 % ──────────────────────────────────────────────────────────────────────────── %
-%                            Définition de couleurs                            %
+%                              Color Definitions                               %
 % ──────────────────────────────────────────────────────────────────────────── %
 %\definecolor{airforceblue}{rgb}{0.36,0.54,0.66}
 %\definecolor{babyblue}{rgb}{0.54,0.81,0.94}
@@ -85,19 +71,19 @@
 %\definecolor{indiagreen}{rgb}{0.07,0.53,0.03}
 
 % ──────────────────────────────────────────────────────────────────────────── %
-%                   Paramétrages pour l'ensemble du document                   %
+%                           Document wide parameters                           %
 % ──────────────────────────────────────────────────────────────────────────── %
 
-% Dossiers par défaut pour l'inclusion de graphiques
+% Default folder for images and tikz graphs
 \graphicspath{ {images/} {tikz/} }
 
-% Dossiers par défaut pour l'inclusion de code tex
+% Default folder for tex code
 \makeatletter
 \def\input@path{ {tikz/} }
 \makeatother
 
 % ──────────────────────────────────────────────────────────────────────────── %
-%                   Modification de comportements par défaut                   %
+%                         Modifying default behaviours                         %
 % ──────────────────────────────────────────────────────────────────────────── %
 \let\oldforall\forall
 \renewcommand{\forall}{\oldforall~}
@@ -105,16 +91,9 @@
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists~}
 
-% ──────────────────────────────────────────────────────────────────────────── %
-%                 Configuration de l'affichage de code source                  %
-% ──────────────────────────────────────────────────────────────────────────── %
-
-% Configuration Minted
-
-% ...
 
 % ──────────────────────────────────────────────────────────────────────────── %
-%                           Cadres et « color box »                            %
+%                          Frames and « color-boxes »                          %
 % ──────────────────────────────────────────────────────────────────────────── %
 \newtcolorbox{picframe}{
     colback=white, hbox, enhanced, right=0pt, left=0pt, bottom=0pt, top=0pt
@@ -146,7 +125,7 @@
 }
 
 % ──────────────────────────────────────────────────────────────────────────── %
-%                           Mise en forme des titres                           %
+%                              Titles formatting                               %
 % ──────────────────────────────────────────────────────────────────────────── %
 
 % Command for coloring the main title
