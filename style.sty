@@ -1,0 +1,196 @@
+\ProvidesPackage{style}[2018/07/14 My Style file .sty]
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                           Packages et dépendances                            %
+% ──────────────────────────────────────────────────────────────────────────── %
+
+%% Mise en forme
+\RequirePackage{xcolor} % gestion des couleurs
+\RequirePackage{multicol} % colonnes multiples côte à côte
+
+\RequirePackage[most]{tcolorbox} % boites et autres cadres
+\RequirePackage[normalem]{ulem}  % barrer du texte
+
+% Liens dynamiques
+\RequirePackage{hyperref}
+\RequirePackage{url}
+\hypersetup{ linktoc=all, hidelinks}
+
+% Documents complémentaires
+\RequirePackage{appendix} % annexes
+\RequirePackage[translate=babel,  % glossary --> glossaire, ...
+                nogroupskip,
+                acronym,
+                toc]{glossaries} % acronymes, glossaires
+
+% Diagrames de Gantt
+\RequirePackage{pgfgantt}
+
+% Titles formating
+\usepackage{titlesec} % formatage des titres
+
+% Boucle for
+\RequirePackage{pgffor}
+
+% Tableaux et matrices
+\RequirePackage{booktabs,adjustbox} % tables sobres sans lignes verticales
+%\RequirePackage{arydshln}
+\RequirePackage{array}
+\RequirePackage{makecell} % sauts de lignes dans une cellule
+\RequirePackage[outline]{contour}
+
+%% Création de graphes et images
+\usepackage[justification=centering]{caption} % colonnes multiples côte à côte
+\RequirePackage{xifthen} % fournit le test \isempty
+\RequirePackage{textcomp}
+
+\RequirePackage{tikz} % graphes et diagrammes natifs
+\usetikzlibrary{
+    positioning,
+    decorations.pathreplacing,
+    shapes, % multiples formes géométriques
+    arrows, % multiples formes pour les flèches
+    calc, % calculs et positions intermédiaires: ($(x)!0.5!(y)$)
+    angles, % dessins d'angles propres
+    quotes, % pour les angles
+}
+
+
+%% Insertion d'images
+\RequirePackage{graphicx} % pour les images
+\RequirePackage{float}
+\RequirePackage{wrapfig} % figures à côté du texte
+
+% Mathématiques
+\RequirePackage{mathtools} % alignement des équations (entre autres)
+\RequirePackage{amssymb}   % symboles (\geqslant, entre autres)
+\RequirePackage{amsthm}    % théorèmes, définitions, lemmes, ...
+
+% .... ?
+\RequirePackage{microtype}
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                            Définition de couleurs                            %
+% ──────────────────────────────────────────────────────────────────────────── %
+%\definecolor{airforceblue}{rgb}{0.36,0.54,0.66}
+%\definecolor{babyblue}{rgb}{0.54,0.81,0.94}
+%\definecolor{beaublue}{rgb}{0.74,0.83,0.9}
+%\definecolor{bluebell}{rgb}{0.64,0.64,0.82}
+%\definecolor{brilliantlavender}{rgb}{0.96,0.73,1.0}
+%\definecolor{bubbles}{rgb}{0.91,1.0,1.0}
+%\definecolor{cadetgrey}{rgb}{0.57,0.64,0.69} \definecolor{cambridgeblue}{rgb}{0.64,0.76,0.68}
+%\definecolor{cinereous}{rgb}{0.6,0.51,0.48}
+%\definecolor{indianred}{rgb}{0.8,0.36,0.36}
+%\definecolor{indianyellow}{rgb}{0.89,0.66,0.34}
+%\definecolor{indiagreen}{rgb}{0.07,0.53,0.03}
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                   Paramétrages pour l'ensemble du document                   %
+% ──────────────────────────────────────────────────────────────────────────── %
+
+% Dossiers par défaut pour l'inclusion de graphiques
+\graphicspath{ {images/} {tikz/} }
+
+% Dossiers par défaut pour l'inclusion de code tex
+\makeatletter
+\def\input@path{ {tikz/} }
+\makeatother
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                   Modification de comportements par défaut                   %
+% ──────────────────────────────────────────────────────────────────────────── %
+\let\oldforall\forall
+\renewcommand{\forall}{\oldforall~}
+
+\let\oldexists\exists
+\renewcommand{\exists}{\oldexists~}
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                 Configuration de l'affichage de code source                  %
+% ──────────────────────────────────────────────────────────────────────────── %
+
+% Configuration Minted
+
+% ...
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                           Cadres et « color box »                            %
+% ──────────────────────────────────────────────────────────────────────────── %
+\newtcolorbox{picframe}{
+    colback=white, hbox, enhanced, right=0pt, left=0pt, bottom=0pt, top=0pt
+}
+
+
+
+\newtcolorbox{codebox}{
+   %colback=grey!2!white,
+   %colframe=black!25!white,
+   %boxrule=1px,
+   %fuzzy halo=2pt with grey!25!white,
+   %bottom=5pt, top=5pt,
+   %grow to left by = -0.5cm,
+   %grow to right by =-0.5cm,
+   %breakable
+}
+
+\newtcolorbox{doublecodebox}[1][]{
+   %sidebyside,
+   %title=#1,
+   %colback=grey!2!white,
+   %colframe=black!25!white,
+   %boxrule=1px,
+   %fuzzy halo=2pt with grey!25!white,
+   %bottom=5pt, top=5pt,
+   %grow to left by = -0.5cm,
+   %grow to right by =-0.5cm
+}
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                           Mise en forme des titres                           %
+% ──────────────────────────────────────────────────────────────────────────── %
+
+% Command for coloring the main title
+\newcommand{\tcol}[1]{\textcolor{blue}{#1}}
+
+% Sections titles are underlined
+\titleformat{\section}[block]%
+    {\Large\bfseries}{}{0pt}%
+    {\thesection}[\vspace{2pt}\titlerule]
+
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\normalfont\bfseries\itshape}
+% -------------------------------------------------------------
+% Titles numbering
+
+\renewcommand{\thesection}%
+    {\Roman{section}%
+        \ifnum\value{section}=0%
+        \else~--~%
+        \fi%
+    }
+\renewcommand{\thesubsection}{}%{\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{}%{\Roman{section}--\arabic{subsection}.\arabic{subsubsection}.}
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                                Environnements                                %
+% ──────────────────────────────────────────────────────────────────────────── %
+
+% Insertion of source code
+
+% ...
+\newenvironment{code}{\vspace{8pt}\begin{codebox}}{\end{codebox}\vspace{8pt}}
+
+% Mathematics
+
+% ...
+
+% ──────────────────────────────────────────────────────────────────────────── %
+%                                   Commands                                   %
+% ──────────────────────────────────────────────────────────────────────────── %
+
+% Grey separator
+\newcommand{\greysep}{\textcolor{grey}{\rule{\textwidth}{1pt}}}
+
+% New operations argmin et argmax in the math environment
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
