@@ -24,8 +24,43 @@
 % ──────────────────────────────────────────────────────────────────────────── %
 %                                                                              %
 % ──────────────────────────────────────────────────────────────────────────── %
-\section{Introduction to equation}
+\section{Introduction to equations}
 
-An equation is a mathematical expression 
+\begin{minipage}{0.475\textwidth}
+    An equation is a mathematical expression that shows that two things are equal. The most important part of an equation is the << \kw{$=$} >>. You can see on the right an example of the format of an equation.
+
+\end{minipage}
+\hfill\vline\hfill
+\begin{minipage}{0.475\textwidth}
+    {\center \textsc{Format of an equation}}
+    \begin{boxequation}
+        \begin{equation}
+            \righteq \kw{\ =\ } \lefteq
+        \end{equation}
+    \end{boxequation}
+\end{minipage}
+
+\subsection{What can I do with an equation ?}
+
+An equation is just a statement saying that \lefteq\ and \righteq\ have the same value. We are allowed to do some transformations on an equation without changing its veracity.
+
+\noindent There is a total of 5 authorized transformations:
+
+\begin{minipage}{0.475\textwidth}
+    \textsc{Swapping both sides}
+\end{minipage}
+\hfill\vline\hfill
+\begin{minipage}{0.475\textwidth}
+    \begin{boxequation}
+        \setcounter{equation}{0}
+        \begin{align}
+            \defpoint{A}{\righteq}\kw{\ &=\ } \lefteq \\
+            \defpoint{B}{\lefteq}\kw{\ &=\ } \righteq
+            \steparrow{A}{B}
+        \end{align}
+    \end{boxequation}
+\end{minipage}
+
+
 
 \end{document}

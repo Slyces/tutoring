@@ -34,6 +34,7 @@
 \usetikzlibrary{
     positioning,
     decorations.pathreplacing,
+    patterns,
     shapes, % geometrical shapes
     arrows, % shapes for arrows
     calc, % intermediary positions: ($(x)!0.5!(y)$)
@@ -50,6 +51,7 @@
 % Mathematics
 \RequirePackage{mathtools} % aligning equations (among other things
 \RequirePackage{amssymb}   % symbols (\geqslant, and others ...)
+\RequirePackage{amsmath}
 \RequirePackage{amsthm}    % theorems, definitions, lemmas, ...
 
 % .... ?
@@ -58,7 +60,7 @@
 % ──────────────────────────────────────────────────────────────────────────── %
 %                              Color Definitions                               %
 % ──────────────────────────────────────────────────────────────────────────── %
-%\definecolor{airforceblue}{rgb}{0.36,0.54,0.66}
+\definecolor{blue}{rgb}{0.36,0.54,0.66}
 %\definecolor{babyblue}{rgb}{0.54,0.81,0.94}
 %\definecolor{beaublue}{rgb}{0.74,0.83,0.9}
 %\definecolor{bluebell}{rgb}{0.64,0.64,0.82}
@@ -66,9 +68,9 @@
 %\definecolor{bubbles}{rgb}{0.91,1.0,1.0}
 %\definecolor{cadetgrey}{rgb}{0.57,0.64,0.69} \definecolor{cambridgeblue}{rgb}{0.64,0.76,0.68}
 %\definecolor{cinereous}{rgb}{0.6,0.51,0.48}
-%\definecolor{indianred}{rgb}{0.8,0.36,0.36}
+\definecolor{red}{rgb}{0.8,0.36,0.36}
 %\definecolor{indianyellow}{rgb}{0.89,0.66,0.34}
-%\definecolor{indiagreen}{rgb}{0.07,0.53,0.03}
+\definecolor{green}{rgb}{0.07,0.53,0.03}
 
 % ──────────────────────────────────────────────────────────────────────────── %
 %                           Document wide parameters                           %
@@ -102,6 +104,17 @@
 
 
 \newtcolorbox{codebox}{
+   %colback=grey!2!white,
+   %colframe=black!25!white,
+   %boxrule=1px,
+   %fuzzy halo=2pt with grey!25!white,
+   %bottom=5pt, top=5pt,
+   %grow to left by = -0.5cm,
+   %grow to right by =-0.5cm,
+   %breakable
+}
+
+\newtcolorbox{equationbox}{
    %colback=grey!2!white,
    %colframe=black!25!white,
    %boxrule=1px,
@@ -161,11 +174,34 @@
 
 % Mathematics
 
-% ...
+\newenvironment{boxequation}{
+    \vspace{8pt}
+    \begin{equationbox}
+}{
+    \end{equationbox}
+    \vspace{8pt}
+}
 
 % ──────────────────────────────────────────────────────────────────────────── %
 %                                   Commands                                   %
 % ──────────────────────────────────────────────────────────────────────────── %
+
+% Keywords: a way to emphasise important keywords
+\newcommand{\kw}[1]{\textcolor{green}{#1}}
+\newcommand{\lefteq}{\tikz[baseline=0.8ex]{
+        \draw[blue, pattern color=white, pattern=north east lines] (0,0) rectangle (2,0.5);
+}}
+\newcommand{\righteq}{\tikz[baseline=0.8ex]{
+        \draw[red, pattern color=white, pattern=north east lines] (0,0) rectangle (2,0.5);
+}}
+
+% Steps
+\newcommand{\steps}{\textsc{steps}}
+\newcommand{\defpoint}[2]{\rnode[l]{#1}{#2}}
+\newcommand{\steparrow}[2]{\pcbar[angle=180,nodesep=3pt,linearc=3pt,linecolor=blue]{->}(#1)(#2)}
+
+% Comment: right aligned, italics
+\newcommand{\ecomment}[1]{\vspace{-2em}\begin{flushright}\textit{(#1)}\end{flushright}\vspace{-0.8em}}
 
 % Grey separator
 \newcommand{\greysep}{\textcolor{grey}{\rule{\textwidth}{1pt}}}
